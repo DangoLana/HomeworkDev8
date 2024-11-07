@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e8c92ee-76f1-4b2d-a470-0bff04a4c8ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DatabaseInitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DatabaseInitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DatabasePopulateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DatabasePopulateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DatabaseQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DatabaseQueryService.java" afterDir="false" />
-    </list>
+    <list default="true" id="2e8c92ee-76f1-4b2d-a470-0bff04a4c8ee" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
