@@ -1,15 +1,12 @@
 package org.example;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.FileReader;
 
 public class DatabaseQueryService {
 
@@ -23,8 +20,8 @@ public class DatabaseQueryService {
         }
 
         try (Connection connection = Database.getInstance().getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
                 int clientId = rs.getInt("CLIENT_ID");
@@ -47,8 +44,8 @@ public class DatabaseQueryService {
         }
 
         try (Connection connection = Database.getInstance().getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -73,8 +70,8 @@ public class DatabaseQueryService {
         }
 
         try (Connection connection = Database.getInstance().getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
                 int workerId = rs.getInt("ID");
@@ -98,8 +95,8 @@ public class DatabaseQueryService {
         }
 
         try (Connection connection = Database.getInstance().getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -113,19 +110,18 @@ public class DatabaseQueryService {
         return result;
     }
 
-        private String readSqlFile(String filePath) {
-            StringBuilder sql = new StringBuilder();
+    private String readSqlFile(String filePath) {
+        StringBuilder sql = new StringBuilder();
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sql.append(line).append(" ");
-                }
-            } catch (IOException e) {
-                System.err.println("Error reading SQL file: " + e.getMessage());
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sql.append(line).append(" ");
             }
-
-            return sql.toString().trim();
+        } catch (IOException e) {
+            System.err.println("Error reading SQL file: " + e.getMessage());
         }
 
+        return sql.toString().trim();
+    }
 }

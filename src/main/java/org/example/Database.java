@@ -27,14 +27,5 @@ public class Database {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, USER, PASSWORD);
     }
-    /*
-    public static void main(String[] args) {
-        try {
-            Connection conn = Database.getInstance().getConnection();
-            System.out.println("Connection to H2 database established.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    */
+
 }
