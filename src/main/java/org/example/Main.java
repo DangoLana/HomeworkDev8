@@ -1,22 +1,29 @@
 package org.example;
 
-
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        DatabaseQueryService queryService = new DatabaseQueryService();
+        ClientService clientService = new ClientService();
 
-        List<MaxProjectCountClient> maxProjectCountClients = queryService.findMaxProjectsClient();
-        System.out.println("Max Projects Clients: " + maxProjectCountClients);
+        try {
+            long clientId = clientService.create("Client1");
+            System.out.println("Created client with ID: " + clientId);
 
-        List<LongestProject> longestProjects = queryService.findLongestProject();
-        System.out.println("Longest Projects: " + longestProjects);
+            String clientName = clientService.getById(clientId);
+            System.out.println("Client name: " + clientName);
 
-        List<MaxSalaryWorker> maxSalaryWorkers = queryService.findMaxSalaryWorker();
-        System.out.println("Max Salary Worker: " + maxSalaryWorkers);
+            clientService.setName(clientId, "UpdatedClient");
+            System.out.println("Updated client name: " + clientService.getById(clientId));
 
-        List<YoungestEldestWorker> youngestEldestWorkers = queryService.findYoungestEldestWorker();
-        System.out.println("Youngest And Eldest Workers: " + youngestEldestWorkers);
+            List<Client> clients = clientService.listAll();
+            System.out.println("All clients: " + clients);
+
+            clientService.deleteById(clientId);
+            System.out.println("Client with ID " + clientId + " deleted.");
+
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 }
